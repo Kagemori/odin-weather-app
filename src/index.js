@@ -1,6 +1,8 @@
 import { startTime } from "./clock";
 import "./css/styles.css";
-import { showData } from "./sampleweather";
+import { getData, showData } from "./sampleweather";
+import { getWeatherJSON } from "./weather";
 
 showData();
 startTime();
+getWeatherJSON(getData());
