@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: aquamarine;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 5fr;
+}
+
+nav {
+    background-color: darkgreen;
+    grid-row: 1 / 2;
+
+    width: 100%;
+    height: 150px;
+}
+
+#content {
+    background-color: lightgreen;
+    grid-row: 2;
+
+    width: 60%;
+    justify-self: center;
+}
