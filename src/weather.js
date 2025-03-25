@@ -93,6 +93,7 @@ function getDayForecast(day) {
     let currentDay = new Date(day.datetime);
     console.log(currentDay.getDay());
     let dayName = getDayName(currentDay.getDay());
+    dayName = dayName.slice(0,3);
 
     let dayNameContainer = document.createElement("div");
     dayNameContainer.classList.add("day-forecast-dayname");

@@ -1,4 +1,4 @@
-import data from "./sample.json";
+import data from "./sample2.json";
 
 function showData() {
     console.log(data);
