@@ -80,7 +80,7 @@ function getWeatherForecast(){
     let days = weatherJSON.days;
     let forecastContainer = document.querySelector("#weather-forecast");
 
-    for(let i = 0; i < days.length; i++){
+    for(let i = 1; i < days.length; i++){
         forecastContainer.appendChild(getDayForecast(days[i]));
     }
 }
@@ -163,7 +163,11 @@ function weatherTypeClass(desc){
         return "today-cloudy";
     }
 
-    return "";
+    if(descLower.includes("clear")){
+        return "today-clear";
+    }
+
+    return "none";
 }
 
 export { getWeatherJSON }
