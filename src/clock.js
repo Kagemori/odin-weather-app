@@ -72,4 +72,4 @@ function getMonthName(month){
     }
 }
 
-export { startTime }
+export { startTime, getDayName }

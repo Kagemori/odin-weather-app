@@ -1,8 +1,19 @@
+import { getDayName } from "./clock";
+
 let weatherJSON;
 
 function getWeatherJSON(json) {
     weatherJSON = json;
+    getCurrentLocation();
     getCurrentTemp();
+    getWeatherForecast();
+}
+
+function getCurrentLocation(){
+    let weatherLocation = document.querySelector("#current-location");
+    let loca = weatherJSON.resolvedAddress;
+
+    weatherLocation.textContent = loca;
 }
 
 function getCurrentTemp(){
@@ -18,6 +29,7 @@ function getCurrentTemp(){
     let weatherContainer =  document.querySelector("#weather-container");
     let weatherCurrent = document.createElement("div");
     weatherCurrent.setAttribute("id","weather-top");
+    weatherContainer.classList.add(weatherTypeClass(curDesc));
     
     let currentTemp = document.createElement("div");
     currentTemp.setAttribute("id","current-temp");
@@ -64,6 +76,48 @@ function getCurrentTemp(){
     weatherContainer.appendChild(weatherCurrent);
 }
 
+function getWeatherForecast(){
+    let days = weatherJSON.days;
+    let forecastContainer = document.querySelector("#weather-forecast");
+
+    for(let i = 0; i < days.length; i++){
+        forecastContainer.appendChild(getDayForecast(days[i]));
+    }
+}
+
+function getDayForecast(day) {
+    let dayContainer = document.createElement("div");
+    dayContainer.classList.add("day-forecast");
+
+    console.log(day.datetime);
+    let currentDay = new Date(day.datetime);
+    console.log(currentDay.getDay());
+    let dayName = getDayName(currentDay.getDay());
+
+    let dayNameContainer = document.createElement("div");
+    dayNameContainer.classList.add("day-forecast-dayname");
+    dayNameContainer.textContent = dayName;
+
+    let dayWeatherContainer = document.createElement("div");
+    dayWeatherContainer.classList.add("day-forecast-weather");
+    dayWeatherContainer.textContent = day.preciptype;
+
+    let dayTempMaxContainer = document.createElement("div");
+    dayTempMaxContainer.classList.add("day-forecast-tempmax");
+    dayTempMaxContainer.textContent = day.tempmax + "°";
+
+    let dayTempMinContainer = document.createElement("div");
+    dayTempMinContainer.classList.add("day-forecast-tempmin");
+    dayTempMinContainer.textContent = day.tempmin + "°";
+
+    dayContainer.appendChild(dayNameContainer);
+    dayContainer.appendChild(dayWeatherContainer);
+    dayContainer.appendChild(dayTempMaxContainer);
+    dayContainer.appendChild(dayTempMinContainer);
+
+    return dayContainer;
+}
+
 function checkPrecip(preciptype){
     let descriptor = "Chance of ";
     preciptype.forEach(element => {
@@ -100,6 +154,16 @@ function checkWind(speed, direction){
     let windDesc = "Wind: " + speed + " mi/h " + dirName;
 
     return windDesc;
+}
+
+function weatherTypeClass(desc){
+    let descLower = desc.toLowerCase();
+
+    if(descLower.includes("cloudy")){
+        return "today-cloudy";
+    }
+
+    return "";
 }
 
 export { getWeatherJSON }
