@@ -95,6 +95,15 @@ nav {
     align-content: center;
 
     font-size: 75px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#current-temp > img {
+    height: 100px;
+    width: auto;
+    
 }
 
 #max-temp {

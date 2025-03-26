@@ -1,6 +1,7 @@
 import { getDayName } from "./clock";
 
 let weatherJSON;
+const iconimg = "https://raw.githubusercontent.com/visualcrossing/WeatherIcons/refs/heads/main/PNG/2nd%20Set%20-%20Color/";
 
 function getWeatherJSON(json) {
     weatherJSON = json;
@@ -25,15 +26,21 @@ function getCurrentTemp(){
     let precipitype = weatherJSON.days[0].preciptype;
     let windSpd = weatherJSON.days[0].windspeed;
     let windDir = weatherJSON.days[0].winddir;
+    let icon = weatherJSON.currentConditions.icon;
 
     let weatherContainer =  document.querySelector("#weather-container");
     let weatherCurrent = document.createElement("div");
     weatherCurrent.setAttribute("id","weather-top");
-    weatherContainer.classList.add(weatherTypeClass(curDesc));
+    weatherContainer.classList.add(weatherTypeClass(icon));
     
     let currentTemp = document.createElement("div");
     currentTemp.setAttribute("id","current-temp");
     currentTemp.textContent = temp + "°F";
+
+    let currentIcon = iconimg + icon + ".png";
+    let currentImg = document.createElement("img");
+    currentImg.src = currentIcon;
+    currentTemp.prepend(currentImg);
 
     let maxTemp = document.createElement("div");
     maxTemp.setAttribute("id","max-temp");
@@ -95,15 +102,9 @@ function getDayForecast(day) {
     let dayName = getDayName(currentDay.getDay());
     dayName = dayName.slice(0,3);
 
-    const iconimg = "https://raw.githubusercontent.com/visualcrossing/WeatherIcons/refs/heads/main/PNG/2nd%20Set%20-%20Color/";
-
     let dayNameContainer = document.createElement("div");
     dayNameContainer.classList.add("day-forecast-dayname");
     dayNameContainer.textContent = dayName;
-
-    // let dayWeatherContainer = document.createElement("div");
-    // dayWeatherContainer.classList.add("day-forecast-weather");
-    // dayWeatherContainer.textContent = day.preciptype;
 
     let dayWeatherContainer = document.createElement("img");
     dayWeatherContainer.classList.add("day-forecast-weather");
@@ -165,15 +166,34 @@ function checkWind(speed, direction){
     return windDesc;
 }
 
-function weatherTypeClass(desc){
-    let descLower = desc.toLowerCase();
+function weatherTypeClass(icon){
 
-    if(descLower.includes("cloudy")){
+    if(icon.includes("cloudy")){
         return "today-cloudy";
     }
 
-    if(descLower.includes("clear")){
+    if(icon.includes("clear")){
         return "today-clear";
+    }
+
+    if(icon.includes("fog")){
+        return "today-fog";
+    }
+
+    if(icon.includes("thunder")){
+        return "today-thunder";
+    }
+
+    if(icon.includes("snow") || icon.includes("sleet") || icon.includes("hail")){
+        return "today-snow";
+    }
+
+    if(icon.includes("rain") || icon.includes("showers")){
+        return "today-rain";
+    }
+
+    if(icon.includes("wind")){
+        return "today-wind";
     }
 
     return "none";
