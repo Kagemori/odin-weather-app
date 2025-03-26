@@ -95,13 +95,21 @@ function getDayForecast(day) {
     let dayName = getDayName(currentDay.getDay());
     dayName = dayName.slice(0,3);
 
+    const iconimg = "https://raw.githubusercontent.com/visualcrossing/WeatherIcons/refs/heads/main/PNG/2nd%20Set%20-%20Color/";
+
     let dayNameContainer = document.createElement("div");
     dayNameContainer.classList.add("day-forecast-dayname");
     dayNameContainer.textContent = dayName;
 
-    let dayWeatherContainer = document.createElement("div");
+    // let dayWeatherContainer = document.createElement("div");
+    // dayWeatherContainer.classList.add("day-forecast-weather");
+    // dayWeatherContainer.textContent = day.preciptype;
+
+    let dayWeatherContainer = document.createElement("img");
     dayWeatherContainer.classList.add("day-forecast-weather");
-    dayWeatherContainer.textContent = day.preciptype;
+    let icon = iconimg + day.icon + ".png";
+    dayWeatherContainer.setAttribute("src",icon);
+
 
     let dayTempMaxContainer = document.createElement("div");
     dayTempMaxContainer.classList.add("day-forecast-tempmax");

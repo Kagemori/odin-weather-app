@@ -160,6 +160,8 @@ nav {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
 
+    place-items: center;
+
     box-shadow: 0 0 5px black;
     border-radius: 5px;
 
