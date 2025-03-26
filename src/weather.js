@@ -31,7 +31,7 @@ function getCurrentTemp(){
     let weatherContainer =  document.querySelector("#weather-container");
     let weatherCurrent = document.createElement("div");
     weatherCurrent.setAttribute("id","weather-top");
-    weatherContainer.classList.add(weatherTypeClass(icon));
+    weatherContainer.classList.add(icon);
     
     let currentTemp = document.createElement("div");
     currentTemp.setAttribute("id","current-temp");
@@ -96,9 +96,7 @@ function getDayForecast(day) {
     let dayContainer = document.createElement("div");
     dayContainer.classList.add("day-forecast");
 
-    console.log(day.datetime);
     let currentDay = new Date(day.datetime);
-    console.log(currentDay.getDay());
     let dayName = getDayName(currentDay.getDay());
     dayName = dayName.slice(0,3);
 
@@ -164,39 +162,6 @@ function checkWind(speed, direction){
     let windDesc = "Wind: " + speed + " mi/h " + dirName;
 
     return windDesc;
-}
-
-function weatherTypeClass(icon){
-
-    if(icon.includes("cloudy")){
-        return "today-cloudy";
-    }
-
-    if(icon.includes("clear")){
-        return "today-clear";
-    }
-
-    if(icon.includes("fog")){
-        return "today-fog";
-    }
-
-    if(icon.includes("thunder")){
-        return "today-thunder";
-    }
-
-    if(icon.includes("snow") || icon.includes("sleet") || icon.includes("hail")){
-        return "today-snow";
-    }
-
-    if(icon.includes("rain") || icon.includes("showers")){
-        return "today-rain";
-    }
-
-    if(icon.includes("wind")){
-        return "today-wind";
-    }
-
-    return "none";
 }
 
 export { getWeatherJSON }

@@ -218,8 +218,44 @@ nav {
     margin-top: 10px;
 }
 
-.today-cloudy {
+.cloudy, .partly-cloudy-day, .partly-cloudy-night {
     background-image: url("https://img.freepik.com/free-vector/blue-sky-clouds-background-with-text-space_1017-26306.jpg?t=st=1742877600~exp=1742881200~hmac=9d5e221c347b588e8f1b55529c0eeca886e5bc4b1a0e59da04f64f97e9394137&w=996");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.clear-day, .clear-night {
+    background-image: url("https://img.freepik.com/free-vector/realistic-blue-sky-background_1048-6707.jpg?t=st=1742968061~exp=1742971661~hmac=e3b9c1fed4263aa28305791cca4760cdd0b243b3a586c773d4605b2e06402249&w=740");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hail, .sleet, .rain-snow-showers-day, .rain-snow-showers-night, .rain-snow, .snow-showers-day, .snow-showers-night, .snow{
+    background-image: url("https://img.freepik.com/free-photo/detailed-orange-grunge-background-with-splats-stains_1048-12955.jpg?t=st=1742969778~exp=1742973378~hmac=6a6b9e80021513f0e8580b5f4fdb2bea586e1d046376b089ef323b1fb6390f84&w=740");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.fog {
+    background-image: url("https://img.freepik.com/free-photo/leafless-tree_422131-57.jpg?t=st=1742969845~exp=1742973445~hmac=2192a735c570e3bd61f160c069d07a1166f07f2b50306178caa2907c23239ae0&w=900");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.rain, .showers-day, .showers-night {
+    background-image: url("https://img.freepik.com/free-photo/raining-tokyo_410324-10.jpg?t=st=1742969879~exp=1742973479~hmac=3dca29a75e0830e5a13c0c7285b3d8574e7e952895337da513256f1cb16ec8fe&w=740");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.thunder-rain, .thunder-showers-day, .thunder-showers-night, .thunder {
+    background-image: url("https://img.freepik.com/free-photo/thunderstorm-countryside_23-2151762533.jpg?t=st=1742969920~exp=1742973520~hmac=9bafb1ae476d954a2d244a2dbc0abe5a3b62a1e79a5391355ed4ab90db457970&w=1380");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.wind {
+    background-image: url("https://img.freepik.com/premium-photo/low-angle-view-clouds-sky_1048944-20853450.jpg?w=826");
     background-repeat: no-repeat;
     background-size: cover;
 }
